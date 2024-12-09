@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,7 +6,7 @@ import { Input, Button, Form, message } from "antd";
 
 const EditEmployee = () => {
   const { id } = useParams();
-  const [employee, setEmployee] = useState({});
+  const [, setEmployee] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -37,7 +35,7 @@ const EditEmployee = () => {
       .put(`http://localhost:5000/api/employees/${id}`, updatedEmployee)
       .then(() => {
         message.success("Employee updated successfully");
-        navigate("/");  // Navigate back to the list page
+        navigate("/"); // Navigate back to the list page
       })
       .catch((error) => {
         message.error("Error updating employee");
@@ -62,7 +60,9 @@ const EditEmployee = () => {
         <Form.Item
           name="name"
           label="Name"
-          rules={[{ required: true, message: "Please input the employee's name!" }]}
+          rules={[
+            { required: true, message: "Please input the employee's name!" },
+          ]}
         >
           <Input
             value={name}
@@ -89,7 +89,12 @@ const EditEmployee = () => {
         <Form.Item
           name="phone"
           label="Phone"
-          rules={[{ required: true, message: "Please input the employee's phone number!" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please input the employee's phone number!",
+            },
+          ]}
         >
           <Input
             value={phone}
@@ -101,7 +106,12 @@ const EditEmployee = () => {
         <Form.Item
           name="department"
           label="Department"
-          rules={[{ required: true, message: "Please input the employee's department!" }]}
+          rules={[
+            {
+              required: true,
+              message: "Please input the employee's department!",
+            },
+          ]}
         >
           <Input
             value={department}
